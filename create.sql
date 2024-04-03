@@ -54,7 +54,7 @@ COMMENT ON COLUMN location.city IS 'City name';
 COMMENT ON COLUMN location.countryCode IS 'code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN';
 COMMENT ON COLUMN location.region IS 'The general region where you live. Can be a US state, or a province, for instance.';
 
-CREATE TABLE profiles(
+CREATE TABLE profiles (
 	bid integer REFERENCES basics,
 	network text,
 	username text,
@@ -66,7 +66,7 @@ COMMENT ON COLUMN profiles.network IS 'e.g. Facebook or Twitter';
 COMMENT ON COLUMN profiles.username IS 'e.g. neutralthoughts';
 COMMENT ON COLUMN profiles.url IS 'e.g. http://twitter.example.com/neutralthoughts';
 
-CREATE TABLE work(
+CREATE TABLE work (
 	bid integer REFERENCES basics,
 	wid serial PRIMARY KEY,
 	name text,
@@ -90,7 +90,7 @@ COMMENT ON COLUMN work.startDate IS '#/definitions/iso8601';
 COMMENT ON COLUMN work.endDate IS '#/definitions/iso8601';
 COMMENT ON COLUMN work.summary IS 'Give an overview of your responsibilities at the company';
 
-CREATE TABLE highlights(
+CREATE TABLE highlights (
 	wid integer REFERENCES work,
 	items text
 );
@@ -99,7 +99,7 @@ COMMENT ON TABLE highlights IS 'Specify multiple accomplishments';
 COMMENT ON COLUMN highlights.wid IS 'Reference to work.wid';
 COMMENT ON COLUMN highlights.items IS 'e.g. Increased profits by 20% from 2011-2012 through viral advertising';
 
-CREATE TABLE volunteer(
+CREATE TABLE volunteer (
 	bid integer REFERENCES basics,
 	vid serial PRIMARY KEY,
 	organization text,
@@ -159,35 +159,35 @@ CREATE TABLE skills (
 	slevel text
 );
 
-CREATE TABLE keywords(
+CREATE TABLE keywords (
 	sid integer REFERENCES skills,
 	items text
 );
 
-CREATE TABLE languages(
+CREATE TABLE languages (
 	bid integer REFERENCES basics,
 	language text,
 	fluency text
 );
 
-CREATE TABLE interests(
+CREATE TABLE interests (
 	bid integer REFERENCES basics,
 	iid serial PRIMARY KEY,
 	name text
 );
 
-CREATE TABLE ikeywords(
+CREATE TABLE ikeywords (
 	iid integer REFERENCES interests,
 	items text
 );
 
-CREATE TABLE reference(
+CREATE TABLE reference (
 	bid integer REFERENCES basics,
 	name text,
 	reference text
 );
 
-CREATE TABLE projects(
+CREATE TABLE projects (
 	bid integer REFERENCES basics,
 	pid serial PRIMARY KEY,
 	name text,
